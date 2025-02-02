@@ -16,6 +16,26 @@ int load_tex_path(char *line, char *dir, t_vars *vars) {
         vars->texE_path = ft_strdup(line+3);
 }
 
+int string_to_color_value(char *line) {
+    int ret;
+    int i;
+
+    if (!line || ft_strlen(line)  < 1 || ft_strlen(line) > 3)
+        return (-1);
+    ret = 0;
+    i = 0;
+    while (line[i])
+    {
+        if (!ft_isdigit(line[i]))
+            return (-1);
+        ret = ret * 10 + (line[i] - '0');
+        i++;
+    }
+    if (ret < 0 || ret > 255)
+        return (-1);
+    return (ret);
+}
+
 int background_color(char *line)
 {
     int r;
@@ -24,9 +44,14 @@ int background_color(char *line)
     char **rgb;
 
     rgb = ft_split(line+2, ',');
-    r = ft_atoi(rgb[0]);
-    g = ft_atoi(rgb[1]);
-    b = ft_atoi(rgb[2]);
+    if (rgb == NULL)
+        return (-1);
+    rgb[2][ft_strchr(rgb[2], '\n') - rgb[2]] = '\0';
+    r = string_to_color_value(rgb[0]);
+    g = string_to_color_value(rgb[1]);
+    b = string_to_color_value(rgb[2]);
+    if (r == -1 || g == -1 || b == -1)
+        return (-1);
     return (r << 16 | g << 8 | b);
 }
 
