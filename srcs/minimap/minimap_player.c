@@ -42,8 +42,8 @@ void	draw_dir_line(t_vars *vars, int color)
 
 void	draw_player(t_vars *vars, double scale)
 {
-	vars->minimap.px = MINIMAP_OFFSET_X + vars->player.posX * scale;
-	vars->minimap.py = MINIMAP_OFFSET_Y + vars->player.posY * scale;
+	vars->minimap.px = MINIMAP_OFFSET_X + vars->player.pos_x * scale;
+	vars->minimap.py = MINIMAP_OFFSET_Y + vars->player.pos_y * scale;
 	for (int dy = -1; dy <= 1; dy++)
 	{
 		for (int dx = -1; dx <= 1; dx++)
@@ -52,8 +52,8 @@ void	draw_player(t_vars *vars, double scale)
 				(int)vars->minimap.py + dy, 0x00FF00);
 		}
 	}
-	vars->minimap.ex = (int)(vars->minimap.px + vars->player.dirX * ARROW_LEN);
-	vars->minimap.ey = (int)(vars->minimap.py + vars->player.dirY * ARROW_LEN);
+	vars->minimap.ex = (int)(vars->minimap.px + vars->player.dir_x * ARROW_LEN);
+	vars->minimap.ey = (int)(vars->minimap.py + vars->player.dir_y * ARROW_LEN);
 	vars->minimap.px = (int)vars->minimap.px;
 	vars->minimap.py = (int)vars->minimap.py;
 	draw_dir_line(vars, (int)0xFF0000);

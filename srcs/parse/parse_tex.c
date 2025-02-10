@@ -88,26 +88,26 @@ void	check_tex_path_format(char *line, int i, t_vars *vars, int fd)
 // テクスチャパスが重複していないかチェックする。
 void	check_duplicate_tex_path(char *dir, t_vars *vars, int fd, char *line)
 {
-	if (ft_strncmp(dir, "NO", 2) == 0 && vars->cub.texN_path)
+	if (ft_strncmp(dir, "NO", 2) == 0 && vars->cub.tex_n_path)
 		parse_error("NO texture path is duplicated.", vars, fd, line);
-	if (ft_strncmp(dir, "SO", 2) == 0 && vars->cub.texS_path)
+	if (ft_strncmp(dir, "SO", 2) == 0 && vars->cub.tex_s_path)
 		parse_error("SO texture path is duplicated.", vars, fd, line);
-	if (ft_strncmp(dir, "WE", 2) == 0 && vars->cub.texW_path)
+	if (ft_strncmp(dir, "WE", 2) == 0 && vars->cub.tex_w_path)
 		parse_error("WE texture path is duplicated.", vars, fd, line);
-	if (ft_strncmp(dir, "EA", 2) == 0 && vars->cub.texE_path)
+	if (ft_strncmp(dir, "EA", 2) == 0 && vars->cub.tex_e_path)
 		parse_error("EA texture path is duplicated.", vars, fd, line);
 }
 
 void	set_tex_path_value(char *dir, char *line, int i, t_vars *vars)
 {
 	if (ft_strncmp(dir, "NO", 2) == 0)
-		vars->cub.texN_path = remove_spaces_tabs_newlines(line + i + 2);
+		vars->cub.tex_n_path = remove_spaces_tabs_newlines(line + i + 2);
 	else if (ft_strncmp(dir, "SO", 2) == 0)
-		vars->cub.texS_path = remove_spaces_tabs_newlines(line + i + 2);
+		vars->cub.tex_s_path = remove_spaces_tabs_newlines(line + i + 2);
 	else if (ft_strncmp(dir, "WE", 2) == 0)
-		vars->cub.texW_path = remove_spaces_tabs_newlines(line + i + 2);
+		vars->cub.tex_w_path = remove_spaces_tabs_newlines(line + i + 2);
 	else if (ft_strncmp(dir, "EA", 2) == 0)
-		vars->cub.texE_path = remove_spaces_tabs_newlines(line + i + 2);
+		vars->cub.tex_e_path = remove_spaces_tabs_newlines(line + i + 2);
 	else
 		parse_error("Invalid line in the .cub file.", vars, 0, line);
 }
@@ -139,9 +139,9 @@ void	process_tex_color_line(char *line, int fd, t_vars *vars)
 	else if (ft_strncmp(line + i, "EA", 2) == 0)
 		parse_tex_path(line + i, "EA", vars, fd);
 	else if (line[i] == 'F')
-		vars->floorColor = rgb_to_int(line + i);
+		vars->floor_color = rgb_to_int(line + i);
 	else if (line[i] == 'C')
-		vars->ceilingColor = rgb_to_int(line + i);
+		vars->ceiling_color = rgb_to_int(line + i);
 	else if (line[i] == '1' || line[i] == '0')
 		parse_error("Texture or color is not loaded.", vars, fd, line);
 	else if (line[i] != '\n' && line[i] != '\0')

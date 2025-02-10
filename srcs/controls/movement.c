@@ -2,69 +2,69 @@
 
 void	move_w(t_vars *vars)
 {
-	double	nextX;
-	double	nextY;
+	double	next_x;
+	double	next_y;
 
-	nextX = vars->player.posX + vars->player.dirX * MOVE_SPEED;
-	nextY = vars->player.posY + vars->player.dirY * MOVE_SPEED;
-	if (vars->map[(int)vars->player.posY][(int)nextX] == '0')
+	next_x = vars->player.pos_x + vars->player.dir_x * MOVE_SPEED;
+	next_y = vars->player.pos_y + vars->player.dir_y * MOVE_SPEED;
+	if (vars->map[(int)vars->player.pos_y][(int)next_x] == '0')
 	{
-		vars->player.posX = nextX;
+		vars->player.pos_x = next_x;
 	}
-	if (vars->map[(int)nextY][(int)vars->player.posX] == '0')
+	if (vars->map[(int)next_y][(int)vars->player.pos_x] == '0')
 	{
-		vars->player.posY = nextY;
+		vars->player.pos_y = next_y;
 	}
 }
 
 void	move_s(t_vars *vars)
 {
-	double	nextX;
-	double	nextY;
+	double	next_x;
+	double	next_y;
 
-	nextX = vars->player.posX - vars->player.dirX * MOVE_SPEED;
-	nextY = vars->player.posY - vars->player.dirY * MOVE_SPEED;
-	if (vars->map[(int)vars->player.posY][(int)nextX] == '0')
+	next_x = vars->player.pos_x - vars->player.dir_x * MOVE_SPEED;
+	next_y = vars->player.pos_y - vars->player.dir_y * MOVE_SPEED;
+	if (vars->map[(int)vars->player.pos_y][(int)next_x] == '0')
 	{
-		vars->player.posX = nextX;
+		vars->player.pos_x = next_x;
 	}
-	if (vars->map[(int)nextY][(int)vars->player.posX] == '0')
+	if (vars->map[(int)next_y][(int)vars->player.pos_x] == '0')
 	{
-		vars->player.posY = nextY;
+		vars->player.pos_y = next_y;
 	}
 }
 
 void	move_a(t_vars *vars)
 {
-	double	nextX;
-	double	nextY;
+	double	next_x;
+	double	next_y;
 
-	nextX = vars->player.posX - vars->player.planeX * MOVE_SPEED;
-	nextY = vars->player.posY - vars->player.planeY * MOVE_SPEED;
-	if (vars->map[(int)nextY][(int)vars->player.posX] == '0')
+	next_x = vars->player.pos_x - vars->player.plane_x * MOVE_SPEED;
+	next_y = vars->player.pos_y - vars->player.plane_y * MOVE_SPEED;
+	if (vars->map[(int)next_y][(int)vars->player.pos_x] == '0')
 	{
-		vars->player.posY = nextY;
+		vars->player.pos_y = next_y;
 	}
-	if (vars->map[(int)vars->player.posY][(int)nextX] == '0')
+	if (vars->map[(int)vars->player.pos_y][(int)next_x] == '0')
 	{
-		vars->player.posX = nextX;
+		vars->player.pos_x = next_x;
 	}
 }
 
 void	move_d(t_vars *vars)
 {
-	double	nextX;
-	double	nextY;
+	double	next_x;
+	double	next_y;
 
-	nextX = vars->player.posX + vars->player.planeX * MOVE_SPEED;
-	nextY = vars->player.posY + vars->player.planeY * MOVE_SPEED;
-	if (vars->map[(int)nextY][(int)vars->player.posX] == '0')
+	next_x = vars->player.pos_x + vars->player.plane_x * MOVE_SPEED;
+	next_y = vars->player.pos_y + vars->player.plane_y * MOVE_SPEED;
+	if (vars->map[(int)next_y][(int)vars->player.pos_x] == '0')
 	{
-		vars->player.posY = nextY;
+		vars->player.pos_y = next_y;
 	}
-	if (vars->map[(int)vars->player.posY][(int)nextX] == '0')
+	if (vars->map[(int)vars->player.pos_y][(int)next_x] == '0')
 	{
-		vars->player.posX = nextX;
+		vars->player.pos_x = next_x;
 	}
 }
 

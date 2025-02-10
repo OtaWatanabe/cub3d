@@ -2,14 +2,14 @@
 
 void	free_tex_path(t_vars *vars)
 {
-	if (vars->cub.texN_path)
-		free(vars->cub.texN_path);
-	if (vars->cub.texS_path)
-		free(vars->cub.texS_path);
-	if (vars->cub.texW_path)
-		free(vars->cub.texW_path);
-	if (vars->cub.texE_path)
-		free(vars->cub.texE_path);
+	if (vars->cub.tex_n_path)
+		free(vars->cub.tex_n_path);
+	if (vars->cub.tex_s_path)
+		free(vars->cub.tex_s_path);
+	if (vars->cub.tex_w_path)
+		free(vars->cub.tex_w_path);
+	if (vars->cub.tex_e_path)
+		free(vars->cub.tex_e_path);
 }
 
 void	free_map(char **map)
@@ -47,14 +47,14 @@ void	free_vars(t_vars *vars)
 		free_visited(vars);
 		vars->cub.visited = NULL;
 	}
-	if (vars->texN.img_ptr)
-		mlx_destroy_image(vars->mlx, vars->texN.img_ptr);
-	if (vars->texS.img_ptr)
-		mlx_destroy_image(vars->mlx, vars->texS.img_ptr);
-	if (vars->texW.img_ptr)
-		mlx_destroy_image(vars->mlx, vars->texW.img_ptr);
-	if (vars->texE.img_ptr)
-		mlx_destroy_image(vars->mlx, vars->texE.img_ptr);
+	if (vars->tex_n.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->tex_n.img_ptr);
+	if (vars->tex_s.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->tex_s.img_ptr);
+	if (vars->tex_w.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->tex_w.img_ptr);
+	if (vars->tex_e.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->tex_e.img_ptr);
 	if (vars->frame.img_ptr)
 		mlx_destroy_image(vars->mlx, vars->frame.img_ptr);
 	if (vars->win)

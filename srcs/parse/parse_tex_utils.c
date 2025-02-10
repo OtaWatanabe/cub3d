@@ -15,10 +15,10 @@ int	is_xpm_extension(char *path)
 
 int	is_textures_xpm_extension(t_vars *vars)
 {
-	if (!is_xpm_extension(vars->cub.texN_path)
-		|| !is_xpm_extension(vars->cub.texS_path)
-		|| !is_xpm_extension(vars->cub.texW_path)
-		|| !is_xpm_extension(vars->cub.texE_path))
+	if (!is_xpm_extension(vars->cub.tex_n_path)
+		|| !is_xpm_extension(vars->cub.tex_s_path)
+		|| !is_xpm_extension(vars->cub.tex_w_path)
+		|| !is_xpm_extension(vars->cub.tex_e_path))
 	{
 		return (1);
 	}
@@ -27,9 +27,9 @@ int	is_textures_xpm_extension(t_vars *vars)
 
 int	tex_path_color_parsed(t_vars *vars)
 {
-	if (vars->cub.texN_path && vars->cub.texS_path && vars->cub.texW_path
-		&& vars->cub.texE_path && vars->floorColor >= 0
-		&& vars->ceilingColor >= 0)
+	if (vars->cub.tex_n_path && vars->cub.tex_s_path && vars->cub.tex_w_path
+		&& vars->cub.tex_e_path && vars->floor_color >= 0
+		&& vars->ceiling_color >= 0)
 	{
 		return (1);
 	}

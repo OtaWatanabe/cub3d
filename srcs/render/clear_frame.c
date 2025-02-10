@@ -12,9 +12,9 @@ void	clear_frame(t_vars *vars)
 		while (x < SCREEN_WIDTH)
 		{
 			if (y < SCREEN_HEIGHT / 2)
-				my_mlx_pixel_put(&vars->frame, x, y, vars->ceilingColor);
+				my_mlx_pixel_put(&vars->frame, x, y, vars->ceiling_color);
 			else
-				my_mlx_pixel_put(&vars->frame, x, y, vars->floorColor);
+				my_mlx_pixel_put(&vars->frame, x, y, vars->floor_color);
 			x++;
 		}
 		x = 0;

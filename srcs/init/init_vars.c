@@ -2,20 +2,20 @@
 
 void	init_vars(t_vars *vars, char *argv1)
 {
-	vars->floorColor = -1;
-	vars->ceilingColor = -1;
-	vars->cub.texN_path = NULL;
-	vars->cub.texS_path = NULL;
-	vars->cub.texW_path = NULL;
-	vars->cub.texE_path = NULL;
+	vars->floor_color = -1;
+	vars->ceiling_color = -1;
+	vars->cub.tex_n_path = NULL;
+	vars->cub.tex_s_path = NULL;
+	vars->cub.tex_w_path = NULL;
+	vars->cub.tex_e_path = NULL;
 	vars->cub.e_map = NULL;
 	vars->map = NULL;
 	vars->mlx = NULL;
 	vars->win = NULL;
-	vars->texN.img_ptr = NULL;
-	vars->texS.img_ptr = NULL;
-	vars->texW.img_ptr = NULL;
-	vars->texE.img_ptr = NULL;
+	vars->tex_n.img_ptr = NULL;
+	vars->tex_s.img_ptr = NULL;
+	vars->tex_w.img_ptr = NULL;
+	vars->tex_e.img_ptr = NULL;
 	vars->frame.img_ptr = NULL;
 	vars->frame.data = NULL;
 	vars->keys.w = 0;

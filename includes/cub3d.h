@@ -12,12 +12,12 @@
 
 typedef struct s_player
 {
-	double		posX;
-	double		posY;
-	double		dirX;
-	double		dirY;
-	double		planeX;
-	double		planeY;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
 }				t_player;
 
 typedef struct s_img
@@ -43,27 +43,27 @@ typedef struct s_keys
 
 typedef struct s_ray
 {
-	double		cameraX;
-	double		rayDirX;
-	double		rayDirY;
-	int			mapX;
-	int			mapY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	int			stepX;
-	int			stepY;
+	double		camera_x;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	int			map_x;
+	int			map_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	int			step_x;
+	int			step_y;
 	int			hit;
 	int			side;
-	double		perpWallDist;
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
-	double		wallX;
-	int			texX;
+	double		perp_wall_dist;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	double		wall_x;
+	int			tex_x;
 	double		step;
-	double		texPos;
+	double		tex_pos;
 	t_img		tex_ptr;
 }				t_ray;
 
@@ -71,10 +71,10 @@ typedef struct s_cub
 {
 	int			em_width;
 	int			em_height;
-	char		*texN_path;
-	char		*texS_path;
-	char		*texE_path;
-	char		*texW_path;
+	char		*tex_n_path;
+	char		*tex_s_path;
+	char		*tex_e_path;
+	char		*tex_w_path;
 	char		**e_map;
 	int			**visited;
 }				t_cub;
@@ -106,20 +106,20 @@ typedef struct s_vars
 	void		*mlx;
 	void		*win;
 	t_player	player;
-	t_img		texN;
-	t_img		texS;
-	t_img		texE;
-	t_img		texW;
+	t_img		tex_n;
+	t_img		tex_s;
+	t_img		tex_e;
+	t_img		tex_w;
 	t_img frame; // フレームバッファ用
 	char		**map;
 	t_keys		keys;
-	int			ceilingColor;
-	int			floorColor;
+	int			ceiling_color;
+	int			floor_color;
 	t_ray		ray;
-	char		*texN_path;
-	char		*texS_path;
-	char		*texE_path;
-	char		*texW_path;
+	char		*tex_n_path;
+	char		*tex_s_path;
+	char		*tex_e_path;
+	char		*tex_w_path;
 	t_cub		cub;
 	int			mouse_in_window;
 	int			old_x;

@@ -2,30 +2,30 @@
 
 int	load_tex(t_vars *vars)
 {
-	vars->texN.img_ptr = mlx_xpm_file_to_image(vars->mlx, vars->cub.texN_path,
-			&vars->texN.width, &vars->texN.height);
-	if (!vars->texN.img_ptr)
+	vars->tex_n.img_ptr = mlx_xpm_file_to_image(vars->mlx, vars->cub.tex_n_path,
+			&vars->tex_n.width, &vars->tex_n.height);
+	if (!vars->tex_n.img_ptr)
 		safe_exit_with_error(vars, "mlx_xpm_file_to_image failed");
-	vars->texN.data = (int *)mlx_get_data_addr(vars->texN.img_ptr,
-			&vars->texN.bpp, &vars->texN.size_line, &vars->texN.endian);
-	vars->texS.img_ptr = mlx_xpm_file_to_image(vars->mlx, vars->cub.texS_path,
-			&vars->texS.width, &vars->texS.height);
-	if (!vars->texS.img_ptr)
+	vars->tex_n.data = (int *)mlx_get_data_addr(vars->tex_n.img_ptr,
+			&vars->tex_n.bpp, &vars->tex_n.size_line, &vars->tex_n.endian);
+	vars->tex_s.img_ptr = mlx_xpm_file_to_image(vars->mlx, vars->cub.tex_s_path,
+			&vars->tex_s.width, &vars->tex_s.height);
+	if (!vars->tex_s.img_ptr)
 		safe_exit_with_error(vars, "mlx_xpm_file_to_image failed");
-	vars->texS.data = (int *)mlx_get_data_addr(vars->texS.img_ptr,
-			&vars->texS.bpp, &vars->texS.size_line, &vars->texS.endian);
-	vars->texE.img_ptr = mlx_xpm_file_to_image(vars->mlx, vars->cub.texE_path,
-			&vars->texE.width, &vars->texE.height);
-	if (!vars->texE.img_ptr)
+	vars->tex_s.data = (int *)mlx_get_data_addr(vars->tex_s.img_ptr,
+			&vars->tex_s.bpp, &vars->tex_s.size_line, &vars->tex_s.endian);
+	vars->tex_e.img_ptr = mlx_xpm_file_to_image(vars->mlx, vars->cub.tex_e_path,
+			&vars->tex_e.width, &vars->tex_e.height);
+	if (!vars->tex_e.img_ptr)
 		safe_exit_with_error(vars, "mlx_xpm_file_to_image failed");
-	vars->texE.data = (int *)mlx_get_data_addr(vars->texE.img_ptr,
-			&vars->texE.bpp, &vars->texE.size_line, &vars->texE.endian);
-	vars->texW.img_ptr = mlx_xpm_file_to_image(vars->mlx, vars->cub.texW_path,
-			&vars->texW.width, &vars->texW.height);
-	if (!vars->texW.img_ptr)
+	vars->tex_e.data = (int *)mlx_get_data_addr(vars->tex_e.img_ptr,
+			&vars->tex_e.bpp, &vars->tex_e.size_line, &vars->tex_e.endian);
+	vars->tex_w.img_ptr = mlx_xpm_file_to_image(vars->mlx, vars->cub.tex_w_path,
+			&vars->tex_w.width, &vars->tex_w.height);
+	if (!vars->tex_w.img_ptr)
 		safe_exit_with_error(vars, "mlx_xpm_file_to_image failed");
-	vars->texW.data = (int *)mlx_get_data_addr(vars->texW.img_ptr,
-			&vars->texW.bpp, &vars->texW.size_line, &vars->texW.endian);
+	vars->tex_w.data = (int *)mlx_get_data_addr(vars->tex_w.img_ptr,
+			&vars->tex_w.bpp, &vars->tex_w.size_line, &vars->tex_w.endian);
 	return (0);
 }
 

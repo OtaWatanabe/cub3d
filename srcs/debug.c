@@ -14,14 +14,14 @@ void	print_map(char **map)
 
 void	debug_player_move(t_vars *vars)
 {
-	printf("Player Position: (%.2f, %.2f)\n", vars->player.posX,
-		vars->player.posY);
-	printf("Direction Vector: (%.2f, %.2f)\n", vars->player.dirX,
-		vars->player.dirY);
-	printf("Plane Vector: (%.2f, %.2f)\n", vars->player.planeX,
-		vars->player.planeY);
+	printf("Player Position: (%.2f, %.2f)\n", vars->player.pos_x,
+		vars->player.pos_y);
+	printf("Direction Vector: (%.2f, %.2f)\n", vars->player.dir_x,
+		vars->player.dir_y);
+	printf("Plane Vector: (%.2f, %.2f)\n", vars->player.plane_x,
+		vars->player.plane_y);
 	// ベクトルの直行
-	double dot_product = vars->player.dirX * vars->player.planeX
-		+ vars->player.dirY * vars->player.planeY;
+	double dot_product = vars->player.dir_x * vars->player.plane_x
+		+ vars->player.dir_y * vars->player.plane_y;
 	printf("Dot Product (should be ~0): %.5f\n", dot_product);
 }
