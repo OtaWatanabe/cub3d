@@ -41,11 +41,11 @@ void	init_ray_vars(t_vars *vars, int x)
 	vars->ray.map_x = (int)vars->player.pos_x;
 	vars->ray.map_y = (int)vars->player.pos_y;
 	//レイの移動距離
-	if (vars->ray.ray_dir_y == 0)
+	if (vars->ray.ray_dir_x == 0)
 		vars->ray.delta_dist_x = 1e30;
 	else
 		vars->ray.delta_dist_x = fabs(1 / vars->ray.ray_dir_x);
-	if (vars->ray.ray_dir_x == 0)
+	if (vars->ray.ray_dir_y == 0)
 		vars->ray.delta_dist_y = 1e30;
 	else
 		vars->ray.delta_dist_y = fabs(1 / vars->ray.ray_dir_y);
