@@ -27,6 +27,40 @@ void	free_map(char **map)
 	free(map);
 }
 
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
+void	free_mlx(t_vars *vars)
+{
+	if (vars->tex_n.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->tex_n.img_ptr);
+	if (vars->tex_s.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->tex_s.img_ptr);
+	if (vars->tex_w.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->tex_w.img_ptr);
+	if (vars->tex_e.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->tex_e.img_ptr);
+	if (vars->frame.img_ptr)
+		mlx_destroy_image(vars->mlx, vars->frame.img_ptr);
+	if (vars->win)
+		mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->mlx)
+	{
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
+	}
+}
+
 void	free_vars(t_vars *vars)
 {
 	if (!vars)
@@ -47,44 +81,4 @@ void	free_vars(t_vars *vars)
 		free_visited(vars);
 		vars->cub.visited = NULL;
 	}
-	if (vars->tex_n.img_ptr)
-		mlx_destroy_image(vars->mlx, vars->tex_n.img_ptr);
-	if (vars->tex_s.img_ptr)
-		mlx_destroy_image(vars->mlx, vars->tex_s.img_ptr);
-	if (vars->tex_w.img_ptr)
-		mlx_destroy_image(vars->mlx, vars->tex_w.img_ptr);
-	if (vars->tex_e.img_ptr)
-		mlx_destroy_image(vars->mlx, vars->tex_e.img_ptr);
-	if (vars->frame.img_ptr)
-		mlx_destroy_image(vars->mlx, vars->frame.img_ptr);
-	if (vars->win)
-		mlx_destroy_window(vars->mlx, vars->win);
-	if (vars->mlx)
-	{
-		mlx_destroy_display(vars->mlx);
-		free(vars->mlx);
-		vars->mlx = NULL;
-	}
-}
-
-void	safe_exit_with_error(t_vars *vars, char *msg)
-{
-	if (vars)
-		free_vars(vars);
-	if (msg)
-		printf("Error\n%s\n", msg);
-	exit(1);
-}
-
-void	free_split(char **split)
-{
-	int i;
-
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
 }
