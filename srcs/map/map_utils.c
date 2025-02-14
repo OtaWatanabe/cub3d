@@ -2,9 +2,7 @@
 
 int	is_player_char(char c)
 {
-	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
-		return (1);
-	return (0);
+	return (c == 'N' || c == 'S' || c == 'W' || c == 'E');
 }
 
 int	is_map_char(char c)

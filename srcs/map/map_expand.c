@@ -28,8 +28,8 @@ void	allocate_expand_map(t_vars *vars)
 
 void	expand_map(t_vars *vars)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	allocate_expand_map(vars);
 	i = 0;
@@ -40,10 +40,9 @@ void	expand_map(t_vars *vars)
 		{
 			if (i == 0 || i == vars->map_height + 1 || j == 0
 				|| j == vars->map_width + 1)
-				vars->cub.e_map[i][j] = ' '; // 上下左右の枠部分はスペース
+				vars->cub.e_map[i][j] = ' ';
 			else
 			{
-				// 元のマップ内にアクセス可能な場合のみコピー
 				if (j - 1 < (int)ft_strlen(vars->map[i - 1]))
 					vars->cub.e_map[i][j] = vars->map[i - 1][j - 1];
 				else
@@ -51,7 +50,6 @@ void	expand_map(t_vars *vars)
 			}
 			j++;
 		}
-		vars->cub.e_map[i][vars->map_width + 2] = '\0';
 		i++;
 	}
 	vars->cub.e_map[vars->map_height + 2] = NULL;

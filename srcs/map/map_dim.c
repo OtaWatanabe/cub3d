@@ -42,6 +42,7 @@ int	get_max_width(char **map)
 // 	}
 // 	return (i);
 // }
+
 int	get_max_height(char **map)
 {
 	int	i;
@@ -50,11 +51,9 @@ int	get_max_height(char **map)
 	i = 0;
 	if (!map)
 		return (0);
-	// map 配列全体の行数をカウント
 	while (map[i])
 		i++;
 	height = i;
-	// 末尾の空行（文字列がない行）はカウントしない
 	while (height > 0 && map[height - 1][0] == '\0')
 		height--;
 	return (height);

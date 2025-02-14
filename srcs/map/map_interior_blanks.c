@@ -1,49 +1,50 @@
 #include "../../includes/cub3d.h"
 
-void	flood_fill(char **map, int height, int width, int row, int col,
-		int **visited)
+void	flood_fill(int row, int col, t_vars *vars)
 {
-	int	dirs[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+	int	dirs[4][2];
 	int	i;
 
-	if (row < 0 || row >= height || col < 0 || col >= width)
+	if (row < 0 || row >= vars->cub.em_height || col < 0
+		|| col >= vars->cub.em_width)
 		return ;
-	if (visited[row][col])
+	if (vars->cub.visited[row][col])
 		return ;
-	/* 空白でなければ探索しない */
-	if (map[row][col] != ' ')
+	if (vars->cub.e_map[row][col] != ' ')
 		return ;
-	visited[row][col] = 1;
+	init_dirs4(dirs);
+	vars->cub.visited[row][col] = 1;
 	i = 0;
 	while (i < 4)
 	{
-		flood_fill(map, height, width, row + dirs[i][0], col + dirs[i][1],
-			visited);
+		flood_fill(row + dirs[i][0], col + dirs[i][1], vars);
 		i++;
 	}
 }
 
 /// 外周の空白文字をvisited 配列にマークする
-void	flood_fill_outside(char **map, int height, int width, int **visited)
+void	flood_fill_outside(t_vars *vars)
 {
 	int	i;
 
 	i = 0;
-	while (i < width)
+	while (i < vars->cub.em_width)
 	{
-		if (map[0][i] == ' ' && !visited[0][i])
-			flood_fill(map, height, width, 0, i, visited);
-		if (map[height - 1][i] == ' ' && !visited[height - 1][i])
-			flood_fill(map, height, width, height - 1, i, visited);
+		if (vars->cub.e_map[0][i] == ' ' && !vars->cub.visited[0][i])
+			flood_fill(0, i, vars);
+		if (vars->cub.e_map[vars->cub.em_height - 1][i] == ' '
+			&& !vars->cub.visited[vars->cub.em_height - 1][i])
+			flood_fill(vars->cub.em_height - 1, i, vars);
 		i++;
 	}
 	i = 0;
-	while (i < height)
+	while (i < vars->cub.em_height)
 	{
-		if (map[i][0] == ' ' && !visited[i][0])
-			flood_fill(map, height, width, i, 0, visited);
-		if (map[i][width - 1] == ' ' && !visited[i][width - 1])
-			flood_fill(map, height, width, i, width - 1, visited);
+		if (vars->cub.e_map[i][0] == ' ' && !vars->cub.visited[i][0])
+			flood_fill(i, 0, vars);
+		if (vars->cub.e_map[i][vars->cub.em_width - 1] == ' '
+			&& !vars->cub.visited[i][vars->cub.em_width - 1])
+			flood_fill(i, vars->cub.em_width - 1, vars);
 		i++;
 	}
 }
@@ -55,8 +56,7 @@ void	replace_interior_blanks(t_vars *vars)
 	int	j;
 
 	allocate_visited(vars);
-	flood_fill_outside(vars->cub.e_map, vars->cub.em_height, vars->cub.em_width,
-		vars->cub.visited);
+	flood_fill_outside(vars);
 	i = 0;
 	while (i < vars->cub.em_height)
 	{

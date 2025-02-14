@@ -1,28 +1,38 @@
 #include "../../includes/cub3d.h"
 
-int	is_reachable_zero_player(int start_row, int start_col, int **visited,
-		char **map, int height, int width)
+void	init_dirs4(int dirs[4][2])
 {
-	int	dirs[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+	dirs[0][0] = 1;
+	dirs[0][1] = 0;
+	dirs[1][0] = -1;
+	dirs[1][1] = 0;
+	dirs[2][0] = 0;
+	dirs[2][1] = 1;
+	dirs[3][0] = 0;
+	dirs[3][1] = -1;
+}
+
+int	is_reachable_zero_player(int row, int col, t_vars *vars)
+{
+	int	dirs[4][2];
 	int	i;
 
 	i = 0;
-	if (start_row < 0 || start_row >= height || start_col < 0
-		|| start_col >= width)
+	init_dirs4(dirs);
+	if (row < 0 || row >= vars->cub.em_height || col < 0
+		|| col >= vars->cub.em_width)
 		return (0);
-	if (visited[start_row][start_col])
+	if (vars->cub.visited[row][col])
 		return (0);
-	visited[start_row][start_col] = 1;
-	if (map[start_row][start_col] == '1' || map[start_row][start_col] == '\0')
+	vars->cub.visited[row][col] = 1;
+	if (vars->cub.e_map[row][col] == '1' || vars->cub.e_map[row][col] == '\0')
 		return (0);
-	if (map[start_row][start_col] == '0' || map[start_row][start_col] == 'N'
-		|| map[start_row][start_col] == 'S' || map[start_row][start_col] == 'E'
-		|| map[start_row][start_col] == 'W')
+	if (is_player_char(vars->cub.e_map[row][col])
+		|| vars->cub.e_map[row][col] == '0')
 		return (1);
 	while (i < 4)
 	{
-		if (is_reachable_zero_player(start_row + dirs[i][0], start_col
-				+ dirs[i][1], visited, map, height, width))
+		if (is_reachable_zero_player(row + dirs[i][0], col + dirs[i][1], vars))
 			return (1);
 		i++;
 	}
@@ -31,9 +41,9 @@ int	is_reachable_zero_player(int start_row, int start_col, int **visited,
 
 void	check_map_enclosed(t_vars *vars)
 {
-	int **visited;
-	int i;
-	int j;
+	int	**visited;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -44,9 +54,7 @@ void	check_map_enclosed(t_vars *vars)
 		{
 			if (vars->cub.e_map[i][j] == ' ' && !vars->cub.visited[i][j])
 			{
-				if (is_reachable_zero_player(i, j, vars->cub.visited,
-						vars->cub.e_map, vars->cub.em_height,
-						vars->cub.em_width))
+				if (is_reachable_zero_player(i, j, vars))
 				{
 					safe_exit_with_error(vars, "map is not enclosed");
 				}

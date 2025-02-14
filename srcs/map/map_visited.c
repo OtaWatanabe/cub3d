@@ -37,18 +37,14 @@ void	reset_visited(t_vars *vars)
 void	allocate_visited(t_vars *vars)
 {
 	int	i;
-	int	width;
-	int	height;
 
 	i = 0;
-	width = vars->cub.em_width;
-	height = vars->cub.em_height;
-	vars->cub.visited = ft_calloc(height + 1, sizeof(int *));
+	vars->cub.visited = ft_calloc(vars->cub.em_height + 1, sizeof(int *));
 	if (vars->cub.visited == NULL)
 		safe_exit_with_error(vars, "failed to allocate memory for visited");
-	while (i < height)
+	while (i < vars->cub.em_height)
 	{
-		vars->cub.visited[i] = malloc(width * sizeof(int));
+		vars->cub.visited[i] = malloc(vars->cub.em_width * sizeof(int));
 		if (vars->cub.visited[i] == NULL)
 		{
 			while (--i >= 0)
@@ -61,6 +57,6 @@ void	allocate_visited(t_vars *vars)
 		}
 		i++;
 	}
-	vars->cub.visited[height] = NULL;
+	vars->cub.visited[vars->cub.em_height] = NULL;
 	reset_visited(vars);
 }
