@@ -1,6 +1,6 @@
 #include "../../includes/cub3d.h"
 
-void	init_vars(t_vars *vars, char *argv1)
+void	init_vars(t_vars *vars)
 {
 	vars->floor_color = -1;
 	vars->ceiling_color = -1;
