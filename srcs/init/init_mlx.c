@@ -29,12 +29,25 @@ int	load_tex(t_vars *vars)
 	return (0);
 }
 
+void	check_tex_size(t_vars *vars)
+{
+	if (64 != vars->tex_n.width || vars->tex_n.width != vars->tex_n.height
+		|| vars->tex_n.height != vars->tex_s.width
+		|| vars->tex_s.width != vars->tex_s.height
+		|| vars->tex_s.height != vars->tex_e.width
+		|| vars->tex_e.width != vars->tex_e.height
+		|| vars->tex_e.height != vars->tex_w.width
+		|| vars->tex_w.width != vars->tex_w.height)
+		safe_exit_with_error(vars, "texture size  must be 64x64");
+}
+
 int	init_mlx(t_vars *vars)
 {
 	vars->mlx = mlx_init();
 	if (!vars->mlx)
 		safe_exit_with_error(vars, "mlx_init failed");
 	load_tex(vars);
+	check_tex_size(vars);
 	vars->win = mlx_new_window(vars->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	if (!vars->win)
 		safe_exit_with_error(vars, "mlx_new_window failed");
