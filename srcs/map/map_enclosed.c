@@ -41,7 +41,6 @@ int	is_reachable_zero_player(int row, int col, t_vars *vars)
 
 void	check_map_enclosed(t_vars *vars)
 {
-	int	**visited;
 	int	i;
 	int	j;
 
