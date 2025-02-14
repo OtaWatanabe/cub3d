@@ -24,6 +24,5 @@ void	init_vars(t_vars *vars, char *argv1)
 	vars->keys.d = 0;
 	vars->keys.left = 0;
 	vars->keys.right = 0;
-	vars->cub_path = argv1;
 	vars->cub.visited = NULL;
 }
