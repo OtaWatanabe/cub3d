@@ -15,9 +15,12 @@ void	calc_wall_distance_height(t_vars *vars)
 	vars->ray.draw_end = vars->ray.line_height / 2 + SCREEN_HEIGHT / 2;
 	if (vars->ray.draw_end >= SCREEN_HEIGHT)
 		vars->ray.draw_end = SCREEN_HEIGHT - 1;
-	vars->ray.wall_x = (vars->ray.side == 0) ? vars->player.pos_y
-		+ vars->ray.perp_wall_dist * vars->ray.ray_dir_y : vars->player.pos_x
-		+ vars->ray.perp_wall_dist * vars->ray.ray_dir_x;
+	if (vars->ray.side == 0)
+		vars->ray.wall_x = vars->player.pos_y + vars->ray.perp_wall_dist
+			* vars->ray.ray_dir_y;
+	else
+		vars->ray.wall_x = vars->player.pos_x + vars->ray.perp_wall_dist
+			* vars->ray.ray_dir_x;
 	vars->ray.wall_x -= floor(vars->ray.wall_x);
 }
 

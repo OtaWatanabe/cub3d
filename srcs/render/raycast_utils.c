@@ -30,17 +30,13 @@ void	init_step_size_dist(t_vars *vars)
 
 void	init_ray_vars(t_vars *vars, int x)
 {
-	//画面のx座標を-1から1に正規化
 	vars->ray.camera_x = 2 * x / (double)SCREEN_WIDTH - 1.0;
-	//レイの方向ベクトル
 	vars->ray.ray_dir_x = vars->player.dir_x + vars->player.plane_x
 		* vars->ray.camera_x;
 	vars->ray.ray_dir_y = vars->player.dir_y + vars->player.plane_y
 		* vars->ray.camera_x;
-	//マップ座標
 	vars->ray.map_x = (int)vars->player.pos_x;
 	vars->ray.map_y = (int)vars->player.pos_y;
-	//レイの移動距離
 	if (vars->ray.ray_dir_x == 0)
 		vars->ray.delta_dist_x = 1e30;
 	else
@@ -49,7 +45,6 @@ void	init_ray_vars(t_vars *vars, int x)
 		vars->ray.delta_dist_y = 1e30;
 	else
 		vars->ray.delta_dist_y = fabs(1 / vars->ray.ray_dir_y);
-	// DDAの初期化
 	init_step_size_dist(vars);
 }
 
