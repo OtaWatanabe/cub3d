@@ -1,14 +1,15 @@
 NAME = cub3D
 OBJ = $(SRC:.c=.o)
 CC = cc
-CFLAGS =  -Wall -Wextra -Werror
+CFLAGS =  -Wall -Wextra -Werror -g
+# CFLAGS =  -Wall -Wextra -Werror -g -fsanitize=address
 RM = rm -f
 LIBFTDIR = libft/
 LIBXDIR = minilibx-linux/
 OBJ_DIR = obj/
 SRC_DIR = srcs/
 OBJ = ${SRC:.c=.o}
-INCLUDE = -L $(LIBFTDIR) -lft -L $(LIBXDIR) -lmlx_Linux -lXext -lX11 -lm
+INCLUDE = -L $(LIBFTDIR) -lft -L $(LIBXDIR) -lmlx_Linux -lXext -lX11 -lm 
 SRC = $(shell find $(SRC_DIR) -type f -name "*.c")
 
 $(NAME): $(OBJ)
@@ -18,7 +19,7 @@ $(NAME): $(OBJ)
 all: $(NAME)
 
 .c.o:
-	$(CC) -c $< -o ${<:.c=.o}
+	$(CC) -c ${CFLAGS} $< -o ${<:.c=.o}
  
 clean:
 	$(RM) $(OBJ) ${NAME}
