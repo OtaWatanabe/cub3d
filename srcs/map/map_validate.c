@@ -13,5 +13,6 @@ int	validate_map(t_vars *vars)
 	replace_interior_blanks(vars);
 	check_map_enclosed(vars);
 	check_map_connected(vars);
+	apply_replace(vars);
 	return (1);
 }

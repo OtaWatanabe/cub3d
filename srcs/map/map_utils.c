@@ -62,3 +62,22 @@ int	trim_map_right_spaces(char **map, int height)
 	}
 	return (1);
 }
+
+void	apply_replace(t_vars *vars)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < vars->cub.em_height)
+	{
+		j = 0;
+		while (j < vars->cub.em_width)
+		{
+			if (vars->cub.e_map[i][j] == 'A')
+				vars->map[i - 1][j - 1] = 'A';
+			j++;
+		}
+		i++;
+	}
+}
