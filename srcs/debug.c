@@ -20,7 +20,6 @@ void	debug_player_move(t_vars *vars)
 		vars->player.dir_y);
 	printf("Plane Vector: (%.2f, %.2f)\n", vars->player.plane_x,
 		vars->player.plane_y);
-	// ベクトルの直行
 	double dot_product = vars->player.dir_x * vars->player.plane_x
 		+ vars->player.dir_y * vars->player.plane_y;
 	printf("Dot Product (should be ~0): %.5f\n", dot_product);
