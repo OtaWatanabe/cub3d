@@ -33,6 +33,7 @@ int	component_contains_player(int row, int col, t_vars *vars)
 	int	found;
 
 	i = 0;
+	found = 0;
 	init_dirs8(dirs);
 	if (is_player_char(vars->cub.e_map[row][col]))
 		found = 1;
