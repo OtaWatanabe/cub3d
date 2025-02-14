@@ -6,7 +6,6 @@
 # define SCREEN_HEIGHT 768
 
 // Linux環境のキーコード
-// (X11/keysym.hなどから参照)
 # define KEY_ESC 65307
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
@@ -20,21 +19,21 @@
 # define EVENT_KEY_RELEASE 3
 
 // マスク (KeyPressMask, KeyReleaseMask)
-# define MASK_KEY_PRESS (1L << 0)
-# define MASK_KEY_RELEASE (1L << 1)
+# define MASK_KEY_PRESS 1L
+# define MASK_KEY_RELEASE 2L
 
-# define MAP_WIDTH 100
-# define MAP_HEIGHT 50
+// マウス感度
+# define MOUSE_SENSITIVITY 0.001
+// プレイヤーの移動速度
+# define MOVE_SPEED 0.01
+// プレイヤーの回転速度
+# define ROT_SPEED -0.01
 
-# define MOVE_SPEED 0.01 // 前後左右の移動速度
-# define ROT_SPEED -0.01 // 回転速度
-
+// ミニマップの設定
 # define MINIMAP_OFFSET_X 10
 # define MINIMAP_OFFSET_Y 10
 # define ARROW_LEN 10.0
 # define MINIMAP_MAX_WIDTH 300
 # define MINIMAP_MAX_HEIGHT 300
-
-# define MOUSE_SENSITIVITY 0.001
 
 #endif

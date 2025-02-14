@@ -110,7 +110,7 @@ typedef struct s_vars
 	t_img		tex_s;
 	t_img		tex_e;
 	t_img		tex_w;
-	t_img frame; // フレームバッファ用
+	t_img		frame;
 	char		**map;
 	t_keys		keys;
 	int			ceiling_color;
@@ -123,7 +123,6 @@ typedef struct s_vars
 	t_cub		cub;
 	int			mouse_in_window;
 	int			old_x;
-	char		*cub_path;
 	int			map_height;
 	int			map_width;
 	t_minimap	minimap;
@@ -162,7 +161,7 @@ int				parse_cub(char *file, t_vars *vars);
 int				is_blank_line(char *line);
 void			free_vars(t_vars *vars);
 void			free_map(char **map);
-void			init_vars(t_vars *vars, char *argv1);
+void			init_vars(t_vars *vars);
 int				is_map_char(char c);
 void			safe_exit_with_error(t_vars *vars, char *msg);
 void			parse_error(char *msg, t_vars *vars, int fd, char *line);
@@ -189,7 +188,7 @@ int				validate_map_structures(char **map, int width, int height);
 int				get_max_width(char **map);
 int				get_max_height(char **map);
 int				is_reachable_zero_player(int start_row, int start_col,
-					int **visited, char **map, int height, int width);
+					t_vars *vars);
 int				check_map_spaces_enclosed(char **map, int width, int height);
 void			check_map_enclosed(t_vars *vars);
 int				is_player_char(char c);
@@ -200,4 +199,10 @@ void			draw_minimap(t_vars *vars);
 void			replace_interior_blanks(t_vars *vars);
 void			draw_player(t_vars *vars, double scale);
 int				trim_map_right_spaces(char **map, int height);
+void			init_dirs4(int dirs[4][2]);
+int				skip_spaces(const char *line);
+void			check_tex_path_format(char *line, int i, t_vars *vars, int fd);
+int				is_map_line(char *line);
+char			**add_line_to_map(t_vars *vars, char **map, char *line, int fd);
+char			*skip_blank_lines(int fd);
 #endif
