@@ -19,8 +19,8 @@ void	rotate_left(t_vars *vars)
 
 void	rotate_right(t_vars *vars)
 {
-	double old_dir_x;
-	double old_plane_x;
+	double	old_dir_x;
+	double	old_plane_x;
 
 	old_dir_x = vars->player.dir_x;
 	vars->player.dir_x = vars->player.dir_x * cos(-ROT_SPEED)

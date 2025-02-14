@@ -68,6 +68,7 @@ void	move_d(t_vars *vars)
 	}
 }
 
+// debug_player_move(vars);でプレイヤーの位置、向きを表示ができる
 void	move_player(t_vars *vars)
 {
 	if (vars->keys.w)
@@ -82,5 +83,4 @@ void	move_player(t_vars *vars)
 		rotate_left(vars);
 	if (vars->keys.right)
 		rotate_right(vars);
-	// debug_player_move(vars);
 }
