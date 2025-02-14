@@ -33,8 +33,8 @@ int	split_len(char **split)
 
 char	*remove_spaces_tabs_newlines(char *line)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')

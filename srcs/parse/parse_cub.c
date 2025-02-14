@@ -2,7 +2,7 @@
 
 int	parse_cub(char *file, t_vars *vars)
 {
-	int fd;
+	int	fd;
 
 	if (!ft_strnstr(file, ".cub", ft_strlen(file)))
 		parse_error("Invalid file extension.", vars, -1, NULL);

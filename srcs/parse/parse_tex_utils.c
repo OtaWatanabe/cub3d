@@ -8,7 +8,7 @@ int	is_xpm_extension(char *path)
 	if (i < 4)
 		return (0);
 	if (path[i - 1] == 'm' && path[i - 2] == 'p' && path[i - 3] == 'x' && path[i
-		- 4] == '.')
+			- 4] == '.')
 		return (1);
 	return (0);
 }
@@ -34,4 +34,22 @@ int	tex_path_color_parsed(t_vars *vars)
 		return (1);
 	}
 	return (0);
+}
+
+// スペースを飛ばす
+int	skip_spaces(const char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	return (i);
+}
+
+// 東西南北の識別子のあとにスペースが来なければエラーを返す。
+void	check_tex_path_format(char *line, int i, t_vars *vars, int fd)
+{
+	if (line[i + 2] != ' ' && line[i + 2] != '\t')
+		parse_error("Invalid line in the .cub file.", vars, fd, line);
 }
