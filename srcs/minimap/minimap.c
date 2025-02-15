@@ -51,7 +51,7 @@ void	draw_minimap(t_vars *vars)
 	i = 0;
 	while (i < vars->map_height)
 	{
-		row_width = strlen(vars->map[i]);
+		row_width = ft_strlen(vars->map[i]);
 		j = 0;
 		while (j < row_width)
 		{
