@@ -81,4 +81,5 @@ void	free_vars(t_vars *vars)
 		free_visited(vars);
 		vars->cub.visited = NULL;
 	}
+	free_mlx(vars);
 }
