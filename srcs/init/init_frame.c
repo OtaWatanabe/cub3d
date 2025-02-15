@@ -2,7 +2,8 @@
 
 int	init_frame(t_vars *vars)
 {
-	vars->frame.img_ptr = mlx_new_image(vars->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	vars->frame.img_ptr = mlx_new_image(vars->mlx, SCREEN_WIDTH, SCREEN_HEIGHT
+			- 1);
 	if (!vars->frame.img_ptr)
 		safe_exit_with_error(vars, "mlx_new_image failed");
 	vars->frame.data = (int *)mlx_get_data_addr(vars->frame.img_ptr,

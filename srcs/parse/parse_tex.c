@@ -1,4 +1,5 @@
 #include "../../includes/cub3d.h"
+
 // テクスチャパスが重複していないかチェックする。
 void	check_duplicate_tex_path(char *dir, t_vars *vars, int fd, char *line)
 {
@@ -45,17 +46,17 @@ void	process_tex_color_line(char *line, int fd, t_vars *vars)
 
 	i = skip_spaces(line);
 	if (ft_strncmp(line + i, "NO", 2) == 0)
-		parse_tex_path(line + i, "NO", vars, fd);
+		parse_tex_path(line, "NO", vars, fd);
 	else if (ft_strncmp(line + i, "SO", 2) == 0)
-		parse_tex_path(line + i, "SO", vars, fd);
+		parse_tex_path(line, "SO", vars, fd);
 	else if (ft_strncmp(line + i, "WE", 2) == 0)
-		parse_tex_path(line + i, "WE", vars, fd);
+		parse_tex_path(line, "WE", vars, fd);
 	else if (ft_strncmp(line + i, "EA", 2) == 0)
-		parse_tex_path(line + i, "EA", vars, fd);
+		parse_tex_path(line, "EA", vars, fd);
 	else if (line[i] == 'F')
-		vars->floor_color = rgb_to_int(line + i);
+		parse_color(line, 'F', vars, fd);
 	else if (line[i] == 'C')
-		vars->ceiling_color = rgb_to_int(line + i);
+		parse_color(line, 'C', vars, fd);
 	else if (line[i] == '1' || line[i] == '0')
 		parse_error("Texture or color is not loaded.", vars, fd, line);
 	else if (line[i] != '\n' && line[i] != '\0')
@@ -77,7 +78,7 @@ int	parse_tex_path_color(int fd, t_vars *vars)
 	if (!tex_path_color_parsed(vars))
 		parse_error("Texture or color is not loaded.", vars, -1, NULL);
 	if (is_textures_xpm_extension(vars))
-		parse_error("Invalid texture path.", vars, -1, NULL);
+		parse_error("Invalid texture path.", vars, fd, NULL);
 	return (0);
 }
 

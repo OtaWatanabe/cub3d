@@ -2,8 +2,8 @@
 
 void	init_vars(t_vars *vars)
 {
-	vars->floor_color = -1;
-	vars->ceiling_color = -1;
+	vars->floor_color = -2;
+	vars->ceiling_color = -2;
 	vars->cub.tex_n_path = NULL;
 	vars->cub.tex_s_path = NULL;
 	vars->cub.tex_w_path = NULL;

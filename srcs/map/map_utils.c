@@ -49,13 +49,12 @@ int	trim_map_right_spaces(char **map, int height)
 	i = 0;
 	while (i < height)
 	{
-		j = ft_strlen(map[i]) - 1;
-		while (j >= 0)
+		j = ft_strlen(map[i]);
+		if (j > 0)
+			j--;
+		while (j >= 0 && map[i][j] == ' ')
 		{
-			if (map[i][j] == '1')
-				break ;
-			if (map[i][j] == ' ')
-				map[i][j] = '\0';
+			map[i][j] = '\0';
 			j--;
 		}
 		i++;

@@ -1,5 +1,16 @@
 #include "../../includes/cub3d.h"
 
+void	print_map_line_len(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		printf("%zu\n", ft_strlen(map[i]));
+		i++;
+	}
+}
 int	validate_map(t_vars *vars)
 {
 	if (!validate_map_chars(vars->map))

@@ -1,11 +1,16 @@
 #include "../includes/cub3d.h"
 
+// #define EnterNotify 7
+// #define LeaveNotify 8
+// 	mlx_hook(vars.win, EnterNotify, 1L << 4, mouse_enter, &vars);
+// 	mlx_hook(vars.win, LeaveNotify, 1L << 5, mouse_leave, &vars);
 int	main(int argc, char **argv)
 {
 	t_vars	vars;
 
 	vars.mouse_in_window = 0;
 	vars.old_x = -1;
+	vars.mouse_inside = 1;
 	if (argc != 2)
 	{
 		printf("Error\nInvalid number of arguments\n");
@@ -25,8 +30,3 @@ int	main(int argc, char **argv)
 	mlx_loop(vars.mlx);
 	return (0);
 }
-
-// #define EnterNotify 7
-// #define LeaveNotify 8
-	// mlx_hook(vars.win, EnterNotify, 1L << 4, mouse_enter, &vars);
-	// mlx_hook(vars.win, LeaveNotify, 1L << 5, mouse_leave, &vars);

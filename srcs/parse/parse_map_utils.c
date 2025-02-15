@@ -47,7 +47,10 @@ char	**add_line_to_map(t_vars *vars, char **map, char *line, int fd)
 	}
 	new_map[i] = ft_strdup(line);
 	if (!new_map[i])
+	{
+		free(new_map);
 		parse_error("Failed to duplicate map line.", vars, fd, NULL);
+	}
 	new_map[i + 1] = NULL;
 	free(map);
 	return (new_map);
