@@ -42,15 +42,22 @@ void	draw_dir_line(t_vars *vars, int color)
 
 void	draw_player(t_vars *vars, double scale)
 {
+	int	dx;
+	int	dy;
+
 	vars->minimap.px = MINIMAP_OFFSET_X + vars->player.pos_x * scale;
 	vars->minimap.py = MINIMAP_OFFSET_Y + vars->player.pos_y * scale;
-	for (int dy = -1; dy <= 1; dy++)
+	dy = -1;
+	while (dy <= 1)
 	{
-		for (int dx = -1; dx <= 1; dx++)
+		dx = -1;
+		while (dx <= 1)
 		{
 			my_mlx_pixel_put(&vars->frame, (int)vars->minimap.px + dx,
 				(int)vars->minimap.py + dy, 0x00FF00);
+			dx++;
 		}
+		dy++;
 	}
 	vars->minimap.ex = (int)(vars->minimap.px + vars->player.dir_x * ARROW_LEN);
 	vars->minimap.ey = (int)(vars->minimap.py + vars->player.dir_y * ARROW_LEN);
