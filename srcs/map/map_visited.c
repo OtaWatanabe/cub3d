@@ -53,6 +53,7 @@ void	allocate_visited(t_vars *vars)
 				vars->cub.visited[i] = NULL;
 			}
 			free(vars->cub.visited);
+			vars->cub.visited = NULL;
 			safe_exit_with_error(vars, "failed to allocate memory for visited");
 		}
 		i++;
