@@ -65,6 +65,10 @@ void	parse_color(char *line, char c, t_vars *vars, int fd)
 	i = skip_spaces(line);
 	if (line[i] != c)
 		parse_error("Invalid line in the .cub file.", vars, fd, line);
+	if (vars->floor_color >= 0 && c == 'F')
+		parse_error("Floor color is duplicated.", vars, fd, line);
+	if (vars->ceiling_color >= 0 && c == 'C')
+		parse_error("Ceiling color is duplicated.", vars, fd, line);
 	if (c == 'F')
 	{
 		vars->floor_color = rgb_to_int(line + i);

@@ -23,8 +23,6 @@ void	set_tex_path_value(char *dir, char *line, int i, t_vars *vars)
 		vars->cub.tex_w_path = remove_spaces_tabs_newlines(line + i + 2);
 	else if (ft_strncmp(dir, "EA", 2) == 0)
 		vars->cub.tex_e_path = remove_spaces_tabs_newlines(line + i + 2);
-	else
-		parse_error("Invalid line in the .cub file.", vars, 0, line);
 }
 
 // lineからテクスチャパスを取得して、varsに設定する。
@@ -76,7 +74,7 @@ int	parse_tex_path_color(int fd, t_vars *vars)
 			line = get_next_line(fd);
 	}
 	if (!tex_path_color_parsed(vars))
-		parse_error("Texture or color is not loaded.", vars, -1, NULL);
+		parse_error("Texture or color is not loaded.", vars, fd, NULL);
 	if (is_textures_xpm_extension(vars))
 		parse_error("Invalid texture path.", vars, fd, NULL);
 	return (0);

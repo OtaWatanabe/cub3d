@@ -33,7 +33,6 @@ int	mouse_move(int x, int y, t_vars *vars)
 		- vars->player.plane_y * sin(angle);
 	vars->player.plane_y = old_plane_x * sin(angle) + vars->player.plane_y
 		* cos(angle);
-	mlx_mouse_hide(vars->mlx, vars->win);
 	mlx_mouse_move(vars->mlx, vars->win, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
 	return (0);
 }

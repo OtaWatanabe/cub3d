@@ -18,6 +18,7 @@ void	allocate_expand_map(t_vars *vars)
 			while (i >= 0)
 				free(vars->cub.e_map[i--]);
 			free(vars->cub.e_map);
+			vars->cub.e_map = NULL;
 			safe_exit_with_error(vars,
 				"failed to allocate memory for expanded map");
 		}

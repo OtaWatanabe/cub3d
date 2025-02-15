@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	init_mlx(&vars);
 	init_frame(&vars);
 	init_player_state(&vars);
+	mlx_mouse_hide(vars.mlx, vars.win);
 	mlx_hook(vars.win, EVENT_KEY_PRESS, MASK_KEY_PRESS, key_press, &vars);
 	mlx_hook(vars.win, EVENT_KEY_RELEASE, MASK_KEY_RELEASE, key_release, &vars);
 	mlx_hook(vars.win, 17, (1L << 17), close_window, &vars);
