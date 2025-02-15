@@ -21,7 +21,8 @@ void	calc_wall_distance_height(t_vars *vars)
 	else
 		vars->ray.wall_x = vars->player.pos_x + vars->ray.perp_wall_dist
 			* vars->ray.ray_dir_x;
-	vars->ray.wall_x -= floor(vars->ray.wall_x);
+	vars->ray.wall_x -= (int)(vars->ray.wall_x);
+	// vars->ray.wall_x -= floor(vars->ray.wall_x);
 }
 
 void	calc_using_tex(t_vars *vars)

@@ -125,6 +125,7 @@ typedef struct s_vars
 	int			old_x;
 	int			map_height;
 	int			map_width;
+	int			mouse_inside;
 	t_minimap	minimap;
 }				t_vars;
 
@@ -205,4 +206,6 @@ void			check_tex_path_format(char *line, int i, t_vars *vars, int fd);
 int				is_map_line(char *line);
 char			**add_line_to_map(t_vars *vars, char **map, char *line, int fd);
 char			*skip_blank_lines(int fd);
+void			apply_replace(t_vars *vars);
+void			parse_color(char *line, char c, t_vars *vars, int fd);
 #endif

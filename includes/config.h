@@ -25,7 +25,7 @@
 // マウス感度
 # define MOUSE_SENSITIVITY 0.001
 // プレイヤーの移動速度
-# define MOVE_SPEED 0.01
+# define MOVE_SPEED 0.02
 // プレイヤーの回転速度
 # define ROT_SPEED -0.01
 
@@ -33,7 +33,7 @@
 # define MINIMAP_OFFSET_X 10
 # define MINIMAP_OFFSET_Y 10
 # define ARROW_LEN 10.0
-# define MINIMAP_MAX_WIDTH 300
-# define MINIMAP_MAX_HEIGHT 300
+# define MINIMAP_MAX_WIDTH 100
+# define MINIMAP_MAX_HEIGHT 100
 
 #endif
