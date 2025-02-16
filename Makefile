@@ -32,9 +32,8 @@ all: $(NAME)
 	$(CC) -c ${CFLAGS} $< -o ${<:.c=.o}
  
 clean:
-	$(RM) $(OBJ) ${NAME}
+	$(RM) $(OBJ)
 	@cd ${LIBFTDIR} && ${MAKE} clean
-	@cd ${LIBXDIR} && ${MAKE} clean
 
 fclean: clean
 	$(RM) $(NAME)
